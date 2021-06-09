@@ -1,0 +1,6 @@
+﻿CREATE FUNCTION [Config].[GetTransactionID]()
+RETURNS VARCHAR(10)
+AS
+BEGIN
+    RETURN CAST(NEXT VALUE FOR Config.TransactionID AS VARCHAR(10));
+END

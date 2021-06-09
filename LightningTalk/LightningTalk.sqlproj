@@ -9,8 +9,7 @@
     <ProjectGuid>{5f2b4ea9-077e-41ad-85fe-25cbf32d5324}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
-    <RootPath>
-    </RootPath>
+    <RootPath />
     <RootNamespace>LightningTalk</RootNamespace>
     <AssemblyName>LightningTalk</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
@@ -49,7 +48,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
-    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
     <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
@@ -71,6 +69,7 @@
     <Folder Include="Communications\Procedures" />
     <Folder Include="Application" />
     <Folder Include="Application\Stored Procedures" />
+    <Folder Include="Config\Scalar Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\Accounts.sql" />
@@ -93,6 +92,8 @@
     <Build Include="Schemas\Application.sql" />
     <Build Include="Application\Stored Procedures\CreateCustomer.sql" />
     <Build Include="Communications\Procedures\CreateWelcomeMailer.sql" />
+    <Build Include="Config\Sequences\TransactionID.sql" />
+    <Build Include="Config\Scalar Functions\GetTransactionID.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="LightningTalk.refactorlog" />

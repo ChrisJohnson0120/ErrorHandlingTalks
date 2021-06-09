@@ -8,8 +8,10 @@ BEGIN TRY
         , @MailingID AS INT
         , @VoucherID AS INT
         , @DateToSend AS DATE = DATEADD(dd, 1, CAST(SYSDATETIME() AS DATE))
+        , @TransactionID AS VARCHAR(10) = Config.GetTransactionID();
 
-    BEGIN TRANSACTION
+    BEGIN TRANSACTION;
+    SAVE TRANSACTION @TransactionID;
         
         EXEC Communications.CreateMailing
               @CustomerID = @CustomerID
@@ -24,12 +26,13 @@ BEGIN TRY
             , @VoucherType = 'Welcome voucher'
             , @MailingID = @MailingID;  
 
-    COMMIT TRANSACTION
+    COMMIT TRANSACTION;
 END TRY
 
 BEGIN CATCH
 
-    ROLLBACK TRANSACTION
+    ROLLBACK TRANSACTION @TransactionID;
+    COMMIT TRANSACTION;
 
     THROW
 

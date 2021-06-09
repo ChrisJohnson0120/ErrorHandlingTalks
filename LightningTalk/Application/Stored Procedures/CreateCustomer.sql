@@ -10,7 +10,10 @@ BEGIN TRY
           @ErrorMessage AS NVARCHAR(2048)
         , @CustomerID AS INT
         , @AccountID AS INT
-    BEGIN TRANSACTION
+        , @TransactionID AS VARCHAR(10) = Config.GetTransactionID();
+
+    BEGIN TRANSACTION;
+    SAVE TRANSACTION @TransactionID;
         
         EXEC Accounts.CreateOrUpdateCustomer
               @Forename = @Forename
@@ -29,14 +32,14 @@ BEGIN TRY
             EXEC Communications.CreateWelcomeMailer
                   @CustomerID = @CustomerID
                 , @AccountID = @AccountID;
-        
 
-    COMMIT TRANSACTION
+    COMMIT TRANSACTION;
 END TRY
 
 BEGIN CATCH
 
-    ROLLBACK TRANSACTION
+    ROLLBACK TRANSACTION @TransactionID;
+    COMMIT TRANSACTION;
 
     THROW
 
