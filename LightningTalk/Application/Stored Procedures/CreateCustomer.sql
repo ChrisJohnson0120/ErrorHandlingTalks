@@ -9,8 +9,9 @@ BEGIN TRY
     DECLARE
           @ErrorMessage AS NVARCHAR(2048)
         , @CustomerID AS INT
-        , @AccountID AS INT
-    BEGIN TRANSACTION
+        , @AccountID AS INT;
+
+    BEGIN TRANSACTION;
         
         EXEC Accounts.CreateOrUpdateCustomer
               @Forename = @Forename
@@ -31,13 +32,13 @@ BEGIN TRY
                 , @AccountID = @AccountID;
         
 
-    COMMIT TRANSACTION
+    COMMIT TRANSACTION;
 END TRY
 
 BEGIN CATCH
 
-    ROLLBACK TRANSACTION
+    ROLLBACK TRANSACTION;
 
-    THROW
+    THROW;
 
 END CATCH
