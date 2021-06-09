@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="2d762a42-99cd-4d72-b505-caac3774aa9d" ChangeDateTime="04/24/2021 13:35:10">
+    <Property Name="ElementName" Value="[Accounts].[Customer].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Accounts].[Customer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CustomerID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3387de8b-bcfb-4e7a-8573-50f306dca5f1" ChangeDateTime="04/24/2021 13:53:12">
+    <Property Name="ElementName" Value="[Accounts].[Account].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Accounts].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="14ad7ccf-97d5-4ed2-aaab-da23249bb87a" ChangeDateTime="04/24/2021 14:10:02">
+    <Property Name="ElementName" Value="[Vouchers].[Voucher].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Vouchers].[Voucher]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="VoucherID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="166ed337-ca00-4bab-8aa4-a9383dddb673" ChangeDateTime="04/24/2021 14:12:11">
+    <Property Name="ElementName" Value="[Vouchers].[Voucher].[VoucherStatus]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Vouchers].[Voucher]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="VoucherStatusID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="990e0ad1-017a-4e9e-b806-4da85a59274a" ChangeDateTime="04/24/2021 14:13:13">
+    <Property Name="ElementName" Value="[Config].[StatusList].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Config].[StatusList]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StatusID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cd78ed7a-ea92-4930-aa68-6d1b7b0b523b" ChangeDateTime="04/24/2021 14:33:39">
+    <Property Name="ElementName" Value="[Communications].[Mailing].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Communications].[Mailing]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MailingID" />
+  </Operation>
+</Operations>
