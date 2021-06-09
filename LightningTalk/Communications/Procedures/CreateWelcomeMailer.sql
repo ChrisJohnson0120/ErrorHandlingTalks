@@ -9,7 +9,7 @@ BEGIN TRY
         , @VoucherID AS INT
         , @DateToSend AS DATE = DATEADD(dd, 1, CAST(SYSDATETIME() AS DATE))
 
-    BEGIN TRANSACTION
+    BEGIN TRANSACTION;
         
         EXEC Communications.CreateMailing
               @CustomerID = @CustomerID
@@ -24,13 +24,13 @@ BEGIN TRY
             , @VoucherType = 'Welcome voucher'
             , @MailingID = @MailingID;  
 
-    COMMIT TRANSACTION
+    COMMIT TRANSACTION;
 END TRY
 
 BEGIN CATCH
 
-    ROLLBACK TRANSACTION
+    ROLLBACK TRANSACTION;
 
-    THROW
+    THROW;
 
 END CATCH

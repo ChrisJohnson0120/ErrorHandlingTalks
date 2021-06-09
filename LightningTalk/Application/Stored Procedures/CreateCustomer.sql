@@ -10,8 +10,9 @@ BEGIN TRY
           @ErrorMessage AS NVARCHAR(2048)
         , @CustomerID AS INT
         , @AccountID AS INT
-        , @TryCounter TINYINT = 0
-    BEGIN TRANSACTION
+        , @TryCounter TINYINT = 0;
+
+    BEGIN TRANSACTION;
         
         EXEC Accounts.CreateOrUpdateCustomer
               @Forename = @Forename
@@ -42,18 +43,18 @@ BEGIN TRY
                         AND Cust.CustomerID = @CustomerID;
                 END TRY
                 BEGIN CATCH
-                    SET @TryCounter = @TryCounter + 1
+                    SET @TryCounter = @TryCounter + 1;
                 END CATCH
             END
         
 
-    COMMIT TRANSACTION
+    COMMIT TRANSACTION;
 END TRY
 
 BEGIN CATCH
 
-    ROLLBACK TRANSACTION
+    ROLLBACK TRANSACTION;
 
-    THROW
+    THROW;
 
 END CATCH
