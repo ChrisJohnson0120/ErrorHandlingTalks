@@ -10,6 +10,7 @@ BEGIN TRY
           @ErrorMessage AS NVARCHAR(2048)
         , @CustomerID AS INT
         , @AccountID AS INT
+        , @TryCounter TINYINT = 0
     BEGIN TRANSACTION
         
         EXEC Accounts.CreateOrUpdateCustomer
@@ -26,9 +27,24 @@ BEGIN TRY
                 , @AccountType = @AccountType;
 
         IF @AccountType IN ('Standard', 'Premium')
-            EXEC Communications.CreateWelcomeMailer
-                  @CustomerID = @CustomerID
-                , @AccountID = @AccountID;
+            WHILE @TryCounter < 3
+            BEGIN
+                BEGIN TRY
+                    EXEC Communications.CreateWelcomeMailer
+                          @CustomerID = @CustomerID
+                        , @AccountID = @AccountID;
+                        
+                    UPDATE Cust
+                    SET
+                          HasWelcomeVoucher = 'TRUE'
+                    FROM Accounts.Customer AS Cust
+                    WHERE 1 = 1
+                        AND Cust.CustomerID = @CustomerID;
+                END TRY
+                BEGIN CATCH
+                    SET @TryCounter = @TryCounter + 1
+                END CATCH
+            END
         
 
     COMMIT TRANSACTION
