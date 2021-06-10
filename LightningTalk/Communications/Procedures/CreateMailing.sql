@@ -26,7 +26,7 @@ BEGIN TRY
             THROW 50000, @ErrorMessage, 1;
         END
 
-        IF ISJSON(@MailingCOntent) <> 1
+        IF ISJSON(@MailingContent) <> 1
         BEGIN
             SET @ErrorMessage = CONCAT(N'Mailing content ''',
                                         CASE
